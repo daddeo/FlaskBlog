@@ -1,0 +1,38 @@
+--------------------------------------------------------------------------------
+
+Before running, either:
+Set environment variable to the file that we want to be our flask application (e.g. flaskblog.py), using
+
+    set (Windows)/export (Linux) FLASK_APP = flaskblog.py
+    set FLASK_DEBUG=1 (set's debug server mode)
+
+then using:
+
+flask run
+
+start server from cmd line using (preferred way).
+
+_____OR
+
+add __name__ check and run from cmd line using (alternative way):
+
+python flaskblog.py
+
+--------------------------------------------------------------------------------
+
+MODULES
+
+Successfully installed Jinja2-2.11.1 MarkupSafe-1.1.1 Werkzeug-1.0.0 click-7.1.1 flask-1.1.1 itsdangerous-1.1.0
+
+--------------------------------------------------------------------------------
+
+Info:
+
+Starter template: https://getbootstrap.com/docs/4.4/getting-started/introduction/
+
+Links:
+
+https://getbootstrap.com/docs/4.4/getting-started/introduction/
+https://palletsprojects.com/p/flask/
+
+--------------------------------------------------------------------------------
