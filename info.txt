@@ -26,6 +26,8 @@ Successfully installed Jinja2-2.11.1 MarkupSafe-1.1.1 Werkzeug-1.0.0 click-7.1.1
 
 --------------------------------------------------------------------------------
 
+PART 2:
+
 Info:
 
 Starter template: https://getbootstrap.com/docs/4.4/getting-started/introduction/
@@ -36,3 +38,9 @@ https://getbootstrap.com/docs/4.4/getting-started/introduction/
 https://palletsprojects.com/p/flask/
 
 --------------------------------------------------------------------------------
+
+PART 3:
+
+install module flask-wtf (to work with forms)
+Successfully installed WTForms-2.2.1 flask-wtf-0.14.3
+
