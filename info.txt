@@ -44,3 +44,84 @@ PART 3:
 install module flask-wtf (to work with forms)
 Successfully installed WTForms-2.2.1 flask-wtf-0.14.3
 
+
+--------------------------------------------------------------------------------
+
+PART 4:
+
+ORM - Object Relational Mapper
+install module flask-sqlalchemy (to work with dbs)
+Successfully installed SQLAlchemy-1.3.15 flask-sqlalchemy-2.4.1
+
+install pylint
+Successfully installed astroid-2.3.3 colorama-0.4.3 isort-4.3.21 lazy-object-proxy-1.4.3 mccabe-0.6.1 pylint-2.4.4 six-1.14.0 wrapt-1.11.2
+
+install black
+Successfully installed appdirs-1.4.3 attrs-19.3.0 black-19.10b0 pathspec-0.7.0 regex-2020.2.20 toml-0.10.0 typed-ast-1.4.1
+
+$ python
+>>> from flaskblog import db
+>>> db.create_all()
+
+(just testing, import the models)
+>>> from flaskblog import User, Post
+>>> user_1 = User(username='Jason', email='J@demo.com', password='password')
+>>> db.session.add(user_1)
+
+rows not committed yet
+>>> user_2 = User(username='JohnDoe', email='jd@demo.com', password='password')
+>>> db.session.add(user_2)
+>>> db.session.commit()
+
+rows now committed
+
+>>> User.query.all()
+[User('Jason', 'J@demo.com', 'default.jpg'), User('JohnDoe', 'jd@demo.com', 'default.jpg')]
+>>> User.query.first()
+User('Jason', 'J@demo.com', 'default.jpg')
+>>> User.query.filter_by(username='J%').all()
+[]
+>>> User.query.filter_by(username='Jason').all()
+[User('Jason', 'J@demo.com', 'default.jpg')]
+>>> User.query.filter_by(username='Jason').first()
+User('Jason', 'J@demo.com', 'default.jpg')
+>>> user = User.query.filter_by(username='Jason').first()
+>>> user
+User('Jason', 'J@demo.com', 'default.jpg')
+>>> user.id
+1
+>>> user = User.query.get(1)
+>>> user
+User('Jason', 'J@demo.com', 'default.jpg')
+>>> user.posts
+[]
+>>> post_1 = Post(title='Blog 1', content='First Post content.', user_id=user.id)
+>>> post_2 = Post(title='Blog 2', content='Second Post content.', user_id=user.id)
+>>> db.session.add(post_1)
+>>> db.session.add(post_2)
+>>> db.session.commit()
+>>> user.posts
+[Post('Blog 1', '2020-03-24 05:03:02.479037''), Post('Blog 2', '2020-03-24 05:03:02.481070'')]
+>>> for post in user.posts:
+...     print(post.title)
+...
+Blog 1
+Blog 2
+>>> post = Post.query.first()
+>>> post
+Post('Blog 1', '2020-03-24 05:03:02.479037'')
+>>> post.user_id
+1
+>>> post.author
+User('Jason', 'J@demo.com', 'default.jpg')
+
+drop db structure (tables and rows)
+>>> db.drop_all()
+
+recreate db structure
+>>> db.create_all()
+>>> User.query.all()
+[]
+>>> Post.query.all()
+[]
+
