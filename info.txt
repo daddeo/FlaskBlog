@@ -125,3 +125,15 @@ recreate db structure
 >>> Post.query.all()
 []
 
+
+--------------------------------------------------------------------------------
+
+PART 5:
+
+Moving project to a package:
+1. create a folder with the name of our application/project/package (e.g. flaskblog)
+2. create a __init__.py file in the new folder (e.g. flaskblog)
+3. move forms.py, models.py, static and templates folders to package folder
+
+
+
