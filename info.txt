@@ -128,7 +128,7 @@ recreate db structure
 
 --------------------------------------------------------------------------------
 
-PART 5:
+PART 5: Package
 
 Moving project to a package:
 1. create a folder with the name of our application/project/package (e.g. flaskblog)
@@ -136,4 +136,28 @@ Moving project to a package:
 3. move forms.py, models.py, static and templates folders to package folder
 
 
+--------------------------------------------------------------------------------
 
+PART 6: Login
+
+install flask-bcrypt
+Successfully installed bcrypt-3.1.7 cffi-1.14.0 flask-bcrypt-0.7.1 pycparser-2.20
+
+>>> from flask_bcrypt import Bcrypt
+>>> bcrypt = Bcrypt()
+>>> bcrypt.generate_password_hash('password')
+b'$2b$12$cDz.iTBmeETSPm6zB2GiP.LTc7mW3OnG9c7eOwj5GeIednvvZ/rwW'
+>>> bcrypt.generate_password_hash('password').decode('utf-8')
+'$2b$12$0nM/M5uQzmcqELfbdyTT2uq3lbyvbEK2RsH7aJUWkqPJCGBa9pG/u'
+>>> bcrypt.generate_password_hash('password').decode('utf-8')
+'$2b$12$bgXaC6M1ruQPSRf/5J4X6.q/UTmoKCo87GWxHgpCB7S2CCq5v.AWm'
+>>> bcrypt.generate_password_hash('password').decode('utf-8')
+'$2b$12$DbOMbscGKpfXoIhdzQAWeunLogMfWtgZpvF5ckoLW93SWHMp.FcNC'
+>>> hased_pw = bcrypt.generate_password_hash('password').decode('utf-8')
+>>> bcrypt.check_password_hash(hased_pw, 'test')
+False
+>>> bcrypt.check_password_hash(hased_pw, 'password')
+True
+
+install flask-login
+Successfully installed flask-login-0.5.0
