@@ -161,3 +161,11 @@ True
 
 install flask-login
 Successfully installed flask-login-0.5.0
+
+
+--------------------------------------------------------------------------------
+
+PART 7: User Account and Profile Picture
+
+install Pillow -- image management
+Successfully installed Pillow-7.0.0

@@ -2,4 +2,6 @@ blog
 .vscode
 __pycache__
 db/
-site.db
+*.db
+flaskblog/static/profile_pics/*
+!flaskblog/static/profile_pics/default.jpg
