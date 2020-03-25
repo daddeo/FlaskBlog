@@ -169,3 +169,9 @@ PART 7: User Account and Profile Picture
 
 install Pillow -- image management
 Successfully installed Pillow-7.0.0
+
+
+--------------------------------------------------------------------------------
+
+Part 8 - Create, Update, and Delete Posts
+
