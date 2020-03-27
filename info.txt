@@ -175,3 +175,8 @@ Successfully installed Pillow-7.0.0
 
 Part 8 - Create, Update, and Delete Posts
 
+
+--------------------------------------------------------------------------------
+
+Part 8.5 - Added SQL Pre-load in prep for Part 9
+

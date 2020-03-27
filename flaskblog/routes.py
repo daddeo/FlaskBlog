@@ -1,27 +1,16 @@
 import os
 import secrets
-from PIL import Image
-from flask import render_template, url_for, flash, redirect, request, abort
-from flaskblog import app, db, bcrypt
-from flaskblog.forms import LoginForm, RegistrationForm, UpdateAccountForm, PostForm
-from flaskblog.models import User, Post
-from flask_login import login_user, current_user, logout_user, login_required
 
-# dummy test data for home page
-# posts = [
-#     {
-#         "author": "Corey Schafer",
-#         "title": "Blog Post 1",
-#         "content": "First post content",
-#         "date_posted": "April 20, 2018",
-#     },
-#     {
-#         "author": "Jane Doe",
-#         "title": "Blog Post 2",
-#         "content": "Second post content",
-#         "date_posted": "April 21, 2018",
-#     },
-# ]
+# url_for: finds the exact location of routes for us, so we don't need to worry about it in the background
+from flask import abort, flash, redirect, render_template, request, url_for
+from flask_login import current_user, login_required, login_user, logout_user
+from PIL import Image
+
+from flaskblog import app, bcrypt, db
+from flaskblog.forms import LoginForm, PostForm, RegistrationForm, UpdateAccountForm
+from flaskblog.models import Post, User
+from flaskblog.database import db_check, db_initialize
+
 
 # route is used to navigate to different pages
 @app.route("/")
@@ -180,3 +169,21 @@ def delete_post(post_id):
     db.session.commit()
     flash("Post deleted.", "success")
     return redirect(url_for("home"))
+
+
+# https://flask.palletsprojects.com/en/1.1.x/cli/
+# import click
+# @click.command('initdb')
+@app.cli.command("initdb")
+def initialize_db():
+    """ Reinitialize the database and preload """
+    db_initialize()
+    return
+
+
+# import click
+# @click.command('check')
+@app.cli.command("check")
+def check_db():
+    db_check()
+    return
