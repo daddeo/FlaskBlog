@@ -1,5 +1,6 @@
 import json
 import os
+from datetime import datetime
 
 from flask import current_app, flash, redirect, render_template, url_for
 from sqlalchemy import text
@@ -101,8 +102,14 @@ def db_initialize():
     # populate posts
     for post_data in data["posts"]:
         user_id = int(post_data["user_id"])
+        # https://docs.python.org/3/library/datetime.html#strftime-and-strptime-behavior
+        # datetime_obj = datetime.strptime(post_data["posted"], "%b %d %Y %I:%M%p")
+        datetime_obj = datetime.strptime(post_data["posted"], "%b %d %Y %H:%M:%S")
         post = Post(
-            title=post_data["title"], content=post_data["content"], user_id=user_id,
+            title=post_data["title"],
+            content=post_data["content"],
+            user_id=user_id,
+            posted=datetime_obj,
         )
         db.session.add(post)
     db.session.commit()

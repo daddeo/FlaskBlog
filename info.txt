@@ -180,3 +180,32 @@ Part 8 - Create, Update, and Delete Posts
 
 Part 8.5 - Added SQL Pre-load in prep for Part 9
 
+
+--------------------------------------------------------------------------------
+
+Part 9 - Pagination
+
+* dir(object) will list out the methods on an object
+
+> posts = Post.query.paginate()
+{total of 25 items}
+
+> dir(posts)
+> posts.per_page
+20
+> posts.page
+1
+> for post in posts.items:
+>    print(post)
+{lists out 20 items}
+>
+> posts = Post.query.paginate(page=2)
+> for post in posts.items:
+>    print(post)
+{lists out 5 items}
+
+> posts = Post.query.paginate(per_page=5)
+{has 5 pages of 5 items}
+> posts = Post.query.paginate(per_page=5, page=2)
+{next 5}
+...
