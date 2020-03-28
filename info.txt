@@ -209,3 +209,27 @@ Part 9 - Pagination
 > posts = Post.query.paginate(per_page=5, page=2)
 {next 5}
 ...
+
+
+--------------------------------------------------------------------------------
+
+Part 10 - Email and Password Reset
+
+itsdangerous installed with Flask
+
+>>> from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
+>>> s = Serializer("secret", 30)
+>>> token = s.dumps({"user_id":1}).decode("utf-8")
+>>> token
+'eyJhbGciOiJIUzUxMiIsImlhdCI6MTU4NTM2NjkxNywiZXhwIjoxNTg1MzY2OTQ3fQ.eyJ1c2VyX2lkIjoxfQ.fWdrCX4lxxBkTLcFuoJbVynB3mfHmYih3by9FKqhn6PvkdqkhuqZFewga5uWh-0hQxOIjpvheqoUY-KL2jqYCg'
+>>> s.loads(token)
+{'user_id': 1}
+>>> s.loads(token)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "C:\dev\src\Python\FlaskBlog\blog\lib\site-packages\itsdangerous\jws.py", line 202, in loads
+    raise SignatureExpired(
+itsdangerous.exc.SignatureExpired: Signature expired
+
+install flask-mail
+Successfully installed blinker-1.4 flask-mail-0.9.1
