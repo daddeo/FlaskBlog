@@ -233,3 +233,11 @@ itsdangerous.exc.SignatureExpired: Signature expired
 
 install flask-mail
 Successfully installed blinker-1.4 flask-mail-0.9.1
+
+
+--------------------------------------------------------------------------------
+
+Part 11 - Blueprints and configuration
+
+created 3 new packages (main, users, posts) -- defined by folder with __init__.py file
+

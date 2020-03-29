@@ -5,7 +5,7 @@ from datetime import datetime
 from flask import current_app, flash, redirect, render_template, url_for
 from sqlalchemy import text
 
-from flaskblog import app, bcrypt, db
+from flaskblog import bcrypt, db
 from flaskblog.models import Post, User
 
 _SQL_COUNT = "select count(*) from {table}"
@@ -19,13 +19,11 @@ def _get_count(table):
 
 
 def _execute_sql(sql_statement):
-    output = "ok"
     try:
         # from sqlalchemy import text
         # result = session.execute(text("SELECT * FROM user WHERE id=:param"), {"param":5})
         result = db.session.execute(sql_statement)
     except Exception as ex:
-        output = str(ex)
         print(repr(ex))
     return result
 
@@ -51,7 +49,7 @@ def _check_status():
 
 def db_initialize():
     """ Initialize database and pre-load with data. """
-    db_up, db_status = _check_status()
+    db_up, _ = _check_status()
     if db_up == False:
         print("Failed DB check, aborting DB initialize.")
         return
@@ -126,5 +124,5 @@ def db_check():
     print("driver: ", url.drivername)
     print("host:   ", url.host)
     print("port:   ", url.port)
-    db_up, db_status = _check_status()
+    _, db_status = _check_status()
     print("status: ", db_status)

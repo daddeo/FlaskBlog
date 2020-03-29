@@ -3,6 +3,7 @@ import json
 import sqlite3
 from sqlite3 import Error
 from datetime import datetime
+from flask import current_app
 
 # from flask_bcrypt import Bcrypt
 
