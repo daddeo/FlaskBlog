@@ -247,3 +247,16 @@ created 3 new packages (main, users, posts) -- defined by folder with __init__.p
 Part 12 - Custom Error Pages
 
 Blueprints need to be packages, hence errors has a __init__.py file
+
+
+--------------------------------------------------------------------------------
+
+Part 13 - Deploy to internet server (Linux)
+
+https://youtu.be/goToXTC96Co?list=PL-osiE80TeTs4UjLw5MM6OjgkjFeUxCYH.
+
+https://www.linode.com/pricing/
+
+$20 credit
+https://promo.linode.com/coreyschafer/
+
